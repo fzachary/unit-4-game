@@ -5,7 +5,7 @@ $(document).ready(function() {
 
 // Generate a *target number* (VARIABLE) that the user is supposed to reach. The user must reach this number exactly. If they go over, they lose. Use Math.random to select a random number between 19 and 120.
 var targetNumber = Math.floor(Math.random() * 120) + 19;
-console.log(targetNumber);
+// console.log(targetNumber);
 
 // Print this number to the DOM
 $('#goal-number').text(targetNumber);
@@ -16,7 +16,7 @@ var blue = Math.floor(Math.random() * 12) + 1;
 var yellow = Math.floor(Math.random() * 12) + 1;
 var green = Math.floor(Math.random() * 12) + 1;
 // Console.log these variables
-console.log(red, blue, yellow, green);
+// console.log(red, blue, yellow, green);
 
 var playerScore = 0;
 var wins = 0;
@@ -31,14 +31,14 @@ function reset() {
 
     // Reset the targetNumber
     targetNumber = Math.floor(Math.random() * 120) + 19;
-    console.log(targetNumber);
+    // console.log(targetNumber);
     $('#goal-number').text(targetNumber);
 
     red = Math.floor(Math.random() * 12) + 1;
     blue = Math.floor(Math.random() * 12) + 1;
     yellow = Math.floor(Math.random() * 12) + 1;
     green = Math.floor(Math.random() * 12) + 1;
-    console.log(red, blue, yellow, green);
+    // console.log(red, blue, yellow, green);
 
     // Reset *player's score* to 0 (variable for player's score)
     playerScore = 0;
@@ -66,7 +66,7 @@ function lose() {
 // JQuery that applies the values to their respective images and adds to the *player's score* when clicked
     $('#red').on('click', function() {
     playerScore = playerScore + red;
-    console.log("New total " + playerScore);
+    // console.log("New total " + playerScore);
     $('#current-score').text(playerScore);
 
     if (playerScore == targetNumber) {
@@ -79,7 +79,7 @@ function lose() {
 
     $('#blue').on('click', function() {
     playerScore = playerScore + blue;
-    console.log("New total " + playerScore);
+    // console.log("New total " + playerScore);
     $('#current-score').text(playerScore);
 
     if (playerScore == targetNumber) {
@@ -92,7 +92,7 @@ function lose() {
 
     $('#yellow').on('click', function() {
     playerScore = playerScore + yellow;
-    console.log("New total " + playerScore);
+    // console.log("New total " + playerScore);
     $('#current-score').text(playerScore);
 
     if (playerScore == targetNumber) {
@@ -105,7 +105,7 @@ function lose() {
 
     $('#green').on('click', function() {
     playerScore = playerScore + green;
-    console.log("New total " + playerScore);
+    // console.log("New total " + playerScore);
     $('#current-score').text(playerScore);
 
     if (playerScore == targetNumber) {
@@ -120,58 +120,5 @@ function lose() {
 
 
 
-// function game() {
-
-    
-
-//     // Console.log thess variables
-//     console.log(red, blue, yellow, green);
-    
-//     
-    
-
-//     $('#blue').on('click', function () {
-//     newScore = blue + playerScore;
-//     $('#current-score').text(newScore);    
-    
-//     })
-
-//     $('#yellow').on('click', function() {
-//     newScore = yellow + playerScore;
-//     $('#current-score').text(newScore);    
-    
-//     })
-
-//     $('#green').on('click', function() {
-//     newScore = green + playerScore;
-//     $('#current-score').text(newScore);    
-    
-// })};
-
-// // while (playerScore < targetNumber) {
-// //     game()
-// // }
-
-// if (playerScore === targetNumber) {
-//     wins++;
-//     $('#win-count').text(wins);
-// } else if (playerScore > targetNumber) {
-//     losses++;
-//     $('#loss-count').text(losses);
-// } else {
-//     game()
-// }
-
-    
-//     // DO NOT reset the *win counter* and *loss counter* (both variables that will accrue values as the game is played more
-
-// // }
-
-// // GAME FUNCTION () {
-
-//     // *ON CLICK EVENT FUNCTIONS*
-//     // FUNCTION: When user clicks on images, add the assigned amount of points from each to the *player's score* variable + update the HTML with the current *player's score*
-//     // COMPARE FUNCTION: If the *player's score* is below the *target number* do nothing but continue to run the game function
-//     
-//     
+// DO NOT reset the *win counter* and *loss counter* (both variables that will accrue values as the game is played more
 
