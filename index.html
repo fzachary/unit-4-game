@@ -1,99 +1,89 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-    
     <meta charset="UTF-8">
     <title>Crystals Collector</title>
-
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    
-
-    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>    
 </head>
 
 <body>
     <div class="container">
         <div class="jumbotron">
-            <div class="container">
-                <h1 style="text-align: center; color: red; font-size: 56px;"><strong>Crystals Collector</strong></h1>
-                    <hr class="my-4">
-                    <p>You will be given a random number at the start of the game</p>
-                    <p>There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.</p>
-                    <p>You win the game by matching your total score to the random number. You lose the game if your total score goes above the random number.</p>
-                    <p>The value of each crystal is hidden from you until you click on it.</p>
-                    <p>The value of each crystal will change at the start of each game.</p>
-            </div>
+            <h1>Crystals Collector</h1>
+            <hr class="my-4">
+            <h2>RULES</h2>
+            <p>You will be given a random number at the start of the game.</p>
+            <p>There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.</p>
+            <p>You win the game by matching your total score to the random number. You lose the game if your total score goes above the random number.</p>
+            <p>The value of each crystal is hidden from you until you click on it.</p>
+            <p>The value of each crystal will change at the start of each game.</p>
         </div>
     </div>
-
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
                 <div class="card card-default">
-                        <div class="card-header">
-                        <h3 class="card-title"><strong>Number to Reach:</strong></h3>
-                        </div>
-                        <div class="card-body">
-                        <h3 id="goal-number"></h3>
-                        </div>
+                    <div class="card-header">
+                    <h3 class="card-title">Number to Reach:</h3>
+                    </div>
+                    <div class="card-body">
+                    <h3 id="target-number"></h3>
+                    </div>
                 </div>
             </div>
-
             <div class="col-sm-6">
                 <div class="card card-default">
                     <div class="card-header">
-                        <h3 class="card-title"><strong>Your current score is:</strong></h3>
+                        <h3 class="card-title">Your current score is:</h3>
                     </div>
                     <div class="card-body">
-                        <h3 id="current-score">0</h3>
+                        <h3 id="score">0</h3>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-sm-6">
                 <div class="card card-default">
                     <div class="card-header">
-                        <h3 class="card-title"><strong>Wins:</strong></h3>
+                        <h3 class="card-title">Wins:</h3>
                     </div>
                     <div class="card-body">
-                        <h3 id="win-count">0</h3>
+                        <h3 id="wins">0</h3>
                     </div>
                 </div>
             </div>
-
             <div class="col-sm-6">
                 <div class="card card-default">
                     <div class="card-header">
-                        <h3 class="card-title"><strong>Losses:</strong></h3>
+                        <h3 class="card-title">Losses:</h3>
                     </div>
                     <div class="card-body">
-                        <h3 id="loss-count">0</h3>
+                        <h3 id="losses">0</h3>
                     </div>
                 </div>
             </div>
         </div>
-    
-    <div class="container">
-        <div class="card" style="width: 17rem; float: left; border: none;">
+    </div>    
+    <div class="container img-container">
+        <div class="card img-card">
             <img src="assets/images/5a1c767cec1618.572703261511814780967.png" class="card-img-top" id="red">
         </div>
 
-        <div class="card" style="width: 17rem; float: left; border: none;">
+        <div class="card img-card">
             <img src="assets/images/5a372fa613bb06.6246191315135661180808.png" class="card-img-top" id="blue">
         </div>
         
-        <div class="card" style="width: 17rem; float: left; border: none;">
+        <div class="card img-card">
             <img src="assets/images/kisspng-crystal-diamond-yellow-diamond-flyer-5ae966a5937197.4452155315252456056039.png" class="card-img-top" id="yellow">
         </div>
 
-        <div class="card" style="width: 16rem; float: left; border: none;">
+        <div class="card img-card">
             <img src="https://clipart.wpblink.com/sites/default/files/wallpaper/crystals-clipart/415164/crystals-clipart-green-crystal-415164-7049064.jpg" class="card-img-top" id="green">
         </div>
     </div>

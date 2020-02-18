@@ -1,124 +1,121 @@
-// WHEN PAGE LOADS
- // Set the *win counter* and *loss counter* to 0 (variables)
+let animateImage = function(event) {
+    event.preventDefault();
+    event.target.classList.remove('animate');
+    event.target.classList.add('animate');
+    setTimeout(function() {
+        event.target.classList.remove('animate');
+    }, 700);
+}
 
+let bubblyImages = document.getElementsByClassName("img-card");
+
+for (var i = 0; i <bubblyImages.length; i++) {
+    bubblyImages[i].addEventListener('click', animateImage, true);
+}
+
+// Page load function
 $(document).ready(function() {
 
-// Generate a *target number* (VARIABLE) that the user is supposed to reach. The user must reach this number exactly. If they go over, they lose. Use Math.random to select a random number between 19 and 120.
-var targetNumber = Math.floor(Math.random() * 120) + 19;
-// console.log(targetNumber);
+    // Generate a target number for the user to reach. It must be reached exactly. If the user goes over, they lose. 
+    // Use Math.random to select a random number between 19 and 120.
+    let targetNumber = Math.floor(Math.random() * 120) + 19;
 
-// Print this number to the DOM
-$('#goal-number').text(targetNumber);
+    // Print this number to the DOM
+    $('#target-number').text(targetNumber);
 
-// Generate a random number for each of the crystal images (divs) that will add to the *player's score* when clicked.
-var red = Math.floor(Math.random() * 12) + 1;
-var blue = Math.floor(Math.random() * 12) + 1;
-var yellow = Math.floor(Math.random() * 12) + 1;
-var green = Math.floor(Math.random() * 12) + 1;
-// Console.log these variables
-// console.log(red, blue, yellow, green);
+    // Generate a random value for each of the crystal images that will add to the player's score when clicked.
+    let red = Math.floor(Math.random() * 12) + 1;
+    let blue = Math.floor(Math.random() * 12) + 1;
+    let yellow = Math.floor(Math.random() * 12) + 1;
+    let green = Math.floor(Math.random() * 12) + 1;
 
-var playerScore = 0;
-var wins = 0;
-var losses = 0;
+    // Initialize the user's score, win total, and loss total
+    let playerScore = 0;
+    let wins = 0;
+    let losses = 0;
 
-$('#win-counter').text(wins);
-$('#loss-counter').text(losses);
+    // Show the win and loss totals
+    $('#win-counter').text(wins);
+    $('#loss-counter').text(losses);
 
+    // Reset function
+    function reset() {
 
-// DEFINE RESET FUNCTION() FIRST {
-function reset() {
+        // Reset the targetNumber
+        targetNumber = Math.floor(Math.random() * 120) + 19;
+        $('#target-number').text(targetNumber);
 
-    // Reset the targetNumber
-    targetNumber = Math.floor(Math.random() * 120) + 19;
-    // console.log(targetNumber);
-    $('#goal-number').text(targetNumber);
+        // Reset the crystal image values
+        red = Math.floor(Math.random() * 12) + 1;
+        blue = Math.floor(Math.random() * 12) + 1;
+        yellow = Math.floor(Math.random() * 12) + 1;
+        green = Math.floor(Math.random() * 12) + 1;
 
-    red = Math.floor(Math.random() * 12) + 1;
-    blue = Math.floor(Math.random() * 12) + 1;
-    yellow = Math.floor(Math.random() * 12) + 1;
-    green = Math.floor(Math.random() * 12) + 1;
-    // console.log(red, blue, yellow, green);
+        // Reset player's score to 0
+        playerScore = 0;
 
-    // Reset *player's score* to 0 (variable for player's score)
-    playerScore = 0;
+        // Reset the corresponding HTML for player's score in the DOM
+        $('#score').text(playerScore);
+    }
 
-    // Reset the corresponding HTML for *player's score* in the DOM
-    $('#current-score').text(playerScore);
-}
+    // If the player's score === target number then it is a win. Add 1 to the win counter variable. Update this in the DOM and reset the game (keeping the new win counter)
+    function win() {
+        alert("You Won!");
+        wins++;
+        $('#wins').text(wins);
+        reset();
+    }
 
-// If the *player's score* is equal to the *target number* then it is a win. Add 1 to the *win counter* variable. Update this in the DOM and RESET() the game (keeping the new *win counter*)
-function win() {
-    alert("You Won!");
-    wins++;
-    $('#win-count').text(wins);
-    reset();
-}
+    // If the *player's score* goes above the *target number* then it is a loss. Add 1 to the *loss counter* variable. Update this in the DOM and RESET() the game (keeping the new *win counter*)
+    function lose() {
+        alert("Sorry, you lost.");
+        losses++;
+        $('#losses').text(losses);
+        reset();
+    }
 
-// If the *player's score* goes above the *target number* then it is a loss. Add 1 to the *loss counter* variable. Update this in the DOM and RESET() the game (keeping the new *win counter*)
-function lose() {
-    alert("Sorry, you lost.");
-    losses++;
-    $('#loss-count').text(losses);
-    reset();
-}
-
-// JQuery that applies the values to their respective images and adds to the *player's score* when clicked
+    // JQuery that applies the values to their respective images and adds to the *player's score* when clicked
     $('#red').on('click', function() {
-    playerScore = playerScore + red;
-    // console.log("New total " + playerScore);
-    $('#current-score').text(playerScore);
-
-    if (playerScore == targetNumber) {
-        win();
-    }
-    else if (playerScore > targetNumber) {
-        lose();
-    }
+        playerScore = playerScore + red;
+        $('#score').text(playerScore);
+        if (playerScore == targetNumber) {
+            win();
+        }
+        else if (playerScore > targetNumber) {
+            lose();
+        }
     })
 
     $('#blue').on('click', function() {
-    playerScore = playerScore + blue;
-    // console.log("New total " + playerScore);
-    $('#current-score').text(playerScore);
-
-    if (playerScore == targetNumber) {
-        win();
-    }
-    else if (playerScore > targetNumber) {
-        lose();
-    }
+        playerScore = playerScore + blue;
+        $('#score').text(playerScore);
+        if (playerScore == targetNumber) {
+            win();
+        }
+        else if (playerScore > targetNumber) {
+            lose();
+        }
     })
 
     $('#yellow').on('click', function() {
-    playerScore = playerScore + yellow;
-    // console.log("New total " + playerScore);
-    $('#current-score').text(playerScore);
-
-    if (playerScore == targetNumber) {
-        win();
-    }
-    else if (playerScore > targetNumber) {
-        lose();
-    }
+        playerScore = playerScore + yellow;
+        $('#score').text(playerScore);
+        if (playerScore == targetNumber) {
+            win();
+        }
+        else if (playerScore > targetNumber) {
+            lose();
+        }
     })
 
     $('#green').on('click', function() {
-    playerScore = playerScore + green;
-    // console.log("New total " + playerScore);
-    $('#current-score').text(playerScore);
-
-    if (playerScore == targetNumber) {
-        win();
-    }
-    else if (playerScore > targetNumber) {
-        lose();
-    }
+        playerScore = playerScore + green;
+        $('#score').text(playerScore);
+        if (playerScore == targetNumber) {
+            win();
+        }
+        else if (playerScore > targetNumber) {
+            lose();
+        }
     });
-
 });
-
-
-
-// DO NOT reset the *win counter* and *loss counter* (both variables that will accrue values as the game is played more
-
